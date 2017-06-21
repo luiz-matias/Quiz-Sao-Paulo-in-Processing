@@ -21,16 +21,16 @@ Movie myMovie;
 SoundFile musica;
 int [][] Quiz = new int [10][5]; //dez perguntas com cinco alternativas cada
 
-int [][] Gabarito = {  {0,0,0,0,1},// E
-                       {0,0,1,0,0},// C
-                       {0,0,1,0,0},// C
-                       {0,0,0,1,0},// D
-                       {0,1,0,0,0},// B
-                       {0,0,0,1,0},// D
-                       {0,0,0,1,0},// D
-                       {1,0,0,0,0},// A
-                       {0,0,0,1,0},// D
-                       {0,0,1,0,0} // C
+int [][] Gabarito = {  {1,0,0,0,0},// A ok
+                       {0,0,0,1,0},// D ok
+                       {0,1,0,0,0},// B ok
+                       {1,0,0,0,0},// A ok 
+                       {1,0,0,0,0},// A ok 
+                       {0,0,0,0,1},// E ok 
+                       {0,1,0,0,0},// B ok
+                       {0,0,1,0,0},// C ok
+                       {0,0,0,0,1},// E ok
+                       {0,0,1,0,0} // C ok
                                     };
 int acertos = 0;
 float AlturaPadrao;
