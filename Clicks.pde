@@ -46,6 +46,10 @@ void mouseClicked(){
         telaAtual = 2;
         primeiroacesso = true;
       }
+      if((mouseX > ((width*0.85)-150) && mouseX < ((width*0.85)+150)) && ((mouseY > (height/3)-150) && (mouseY < (height/3)+150))){
+        primeiroacesso = true;
+        ampliarimagem("saopaulowallpaper2.jpg", 3);
+      }
     break;
     case 4: //tela 4
       if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
@@ -77,16 +81,56 @@ void mouseClicked(){
         primeiroacesso = true;
       }
     break;
-    case 7:
-      if((mouseX > 0 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
+    case 7: //tela 7
+      if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
+        telaAtual= 8; //ir pra tela 7 quando criar
+        primeiroacesso= true;
+      }
+      if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
+        telaAtual = 6;
+        primeiroacesso = true;
+      }
+    break;
+    case 8: //tela 8
+      if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
+        telaAtual= 9; //ir pra tela 7 quando criar
+        primeiroacesso= true;
+      }
+      if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
+        telaAtual = 7;
+        primeiroacesso = true;
+      }
+    break;
+    case 9: //tela 9
+      if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
+        telaAtual= 10; //ir pra tela 7 quando criar
+        primeiroacesso= true;
+      }
+      if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
         telaAtual = 8;
+        primeiroacesso = true;
+      }
+    break;
+    case 10: //tela 10
+      if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
+        telaAtual= 11; //ir pra tela 7 quando criar
+        primeiroacesso= true;
+      }
+      if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
+        telaAtual = 9;
+        primeiroacesso = true;
+      }
+    break;
+    case 11:
+      if((mouseX > 0 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
+        telaAtual = 12;
         primeiroacesso = true;
         myMovie.stop();
       }
     break;
-    case 8: //tela 8 -- questão 1
+    case 12: //tela 12 -- questão 1
       if((mouseX > 0 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 9;
+        telaAtual = 13;
         primeiroacesso = true;
       }
       
@@ -128,13 +172,13 @@ void mouseClicked(){
       }
       
     break;
-    case 9: //tela 9 -- questão 2
+    case 13: //tela 13 -- questão 2
       if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 10;
+        telaAtual = 14;
         primeiroacesso = true;
       }
       if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 8;
+        telaAtual = 12;
         primeiroacesso = true;
       }
       
@@ -176,13 +220,13 @@ void mouseClicked(){
       }
       
     break;
-    case 10: //tela 10 -- questão 3
+    case 14: //tela 14 -- questão 3
       if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 11;
+        telaAtual = 15;
         primeiroacesso = true;
       }
       if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 9;
+        telaAtual = 13;
         primeiroacesso = true;
       }
       
@@ -224,13 +268,13 @@ void mouseClicked(){
       }
       
     break;
-    case 11: //tela 11 -- questão 4
+    case 15: //tela 15 -- questão 4
       if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 12;
+        telaAtual = 16;
         primeiroacesso = true;
       }
       if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 10;
+        telaAtual = 14;
         primeiroacesso = true;
       }
       
@@ -272,13 +316,13 @@ void mouseClicked(){
       }
       
     break;
-    case 12: //tela 12 -- questão 5
+    case 16: //tela 16 -- questão 5
       if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 13;
+        telaAtual = 17;
         primeiroacesso = true;
       }
       if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 11;
+        telaAtual = 15;
         primeiroacesso = true;
       }
       
@@ -320,13 +364,13 @@ void mouseClicked(){
       }
       
     break;
-    case 13: //tela 13 -- questão 6
+    case 17: //tela 17 -- questão 6
       if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 14;
+        telaAtual = 18;
         primeiroacesso = true;
       }
       if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 12;
+        telaAtual = 16;
         primeiroacesso = true;
       }
       
@@ -368,13 +412,13 @@ void mouseClicked(){
       }
       
     break;
-    case 14: //tela 14 -- questão 7
+    case 18: //tela 18 -- questão 7
       if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 15;
+        telaAtual = 19;
         primeiroacesso = true;
       }
       if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 13;
+        telaAtual = 17;
         primeiroacesso = true;
       }
       
@@ -416,13 +460,13 @@ void mouseClicked(){
       }
       
     break;
-    case 15: //tela 15 -- questão 8
+    case 19: //tela 19 -- questão 8
       if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 16;
+        telaAtual = 20;
         primeiroacesso = true;
       }
       if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 14;
+        telaAtual = 18;
         primeiroacesso = true;
       }
       
@@ -464,13 +508,13 @@ void mouseClicked(){
       }
       
     break;
-    case 16: //tela 16 -- questão 9
+    case 20: //tela 20 -- questão 9
       if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 17;
+        telaAtual = 21;
         primeiroacesso = true;
       }
       if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 15;
+        telaAtual = 19;
         primeiroacesso = true;
       }
       
@@ -512,14 +556,14 @@ void mouseClicked(){
       }
       
     break;
-    case 17: //tela 17 -- questão 10
+    case 21: //tela 21 -- questão 10
     
     if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 18;
+        telaAtual = 22;
         primeiroacesso = true;
       }
       if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){
-        telaAtual = 16;
+        telaAtual = 20;
         primeiroacesso = true;
       }
       
@@ -561,7 +605,7 @@ void mouseClicked(){
       
     break;
     
-    case 18: //tela 18 -- final do QUIZ
+    case 22: //tela 22 -- final do QUIZ
     if((mouseX > 0 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){
       for(int i=0; i<10; i++){
         for(int j=0; j<5; j++){

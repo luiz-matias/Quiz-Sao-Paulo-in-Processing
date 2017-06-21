@@ -40,12 +40,18 @@ PImage imagem, ampliaricon, fecharicon;
 PFont fontTitle, fontSubTitle, fontText;
 float largura, altura;
 int telaAtual, telaorigem;
+String smile= ")";
 
 void setup() {
-  size(1280, 720);
+  size(1280, 720); //Todo o quiz foi baseado nesta resolução, mas foram tomados alguns cuidados para o design das telas se adaptar ao tamanho da tela.
+                   //Porém, é recomendado utilizar a mesma (1280x720).
   background(255);
   frameRate(30);
   noStroke();
+  
+  musica = new SoundFile(this, "musicafundo.mp3");
+  musica.loop();
+  musica.amp(0.1);
   AlturaPadrao = width*0.8;
   ampliaricon = loadImage("ampliarwithtext.png");
   fecharicon = loadImage("close.png");
@@ -111,6 +117,18 @@ void draw() {
     break;
     case 18:
       tela18();
+    break;
+    case 19:
+      tela19();
+    break;
+    case 20:
+      tela20();
+    break;
+    case 21:
+      tela21();
+    break;
+    case 22:
+      tela22();
     break;
   }
 }

@@ -20,8 +20,10 @@ void tela1(){ //TELA INICIAL DO QUIZ
     myMovie.loop();
     myMovie.volume(0);
     primeiroacesso = false;
+    thread("sorrisoMudando");
   }
   imageMode(CORNER);
+  noStroke();
   image(myMovie, 0, 0, width, height); //reproduz o vídeo em tela cheia
   fill(0, 170); //adiciona opacidade de 80% no vídeo (204 de 255)
   rect(0, 0, width, height); //cria um retângulo para aplicar efeito de opacidade
@@ -30,10 +32,12 @@ void tela1(){ //TELA INICIAL DO QUIZ
   textAlign(CENTER);
   text("São Paulo x Tecnologia", width/2, height/4); //texto de título
   textFont(fontSubTitle);
-  text("Desenvolvido por: Luiz Matias e João Henrique\nCurso: Bacharelado em Ciência da Computação", width/2, height/2); //texto de subtítulo
+  textSize(26);
+  text("São Paulo representa um dos 9 maiores polos tecnológicos do mundo, sendo referência em startups!\n\nQue tal aprender um pouco mais sobre?\n="+smile, width/2, height/2); //texto de subtítulo
+  
   
   if((mouseX > 0 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){fill(#43bdcc);}else{fill(#35939e);}
-  
+  textFont(fontSubTitle);
   rect(0, 0.85*height, width, height);
   fill(255);
   textAlign(CENTER);
@@ -62,7 +66,9 @@ void tela2(){ //TELA DE INTRODUÇÃO SOBRE SÃO PAULO
   fill(0);
   text("Introdução", width/100, height/10);
   textFont(fontText);
-  //text("Aenean placerat. In vulputate urna eu arcu. Aliquam erat volutpat. Suspendisse potenti. Morbi mattis felis at nunc. Duis viverra diam non justo. In nisl. Nullam sit amet magna\nin magna gravida vehicula. Mauris tincidunt sem sed arcu. Nunc posuere. Nullam lectus justo, vulputate eget, mollis sed, tempor sed, magna. Cum sociis natoque penatibus et\nmagnis dis parturient montes, nascetur ridiculus mus. Etiam neque. Curabitur ligula sapien, pulvinar a, vestibulum quis, facilisis vel, sapien. Nullam eget nisl. Donec vitae arcu.\nLorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi gravida libero nec velit. Morbi scelerisque luctus velit. Etiam dui sem, fermentum vitae, sagittis id, malesuada\nin,quam. Proin mattis lacinia justo. Vestibulum facilisis auctor urna. Aliquam in lorem sit amet leo accumsan lacinia. Integer rutrum, orci vestibulum ullamcorper ultricies, lacus\nquam ultricies odio, vitae placerat pede sem sit amet enim. Phasellus et lorem id felis nonummy placerat. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Aenean\nvel massa quis mauris vehicula lacinia. Quisque tincidunt scelerisque libero. Maecenas libero. Etiam dictum tincidunt diam. Donec ipsum massa, ullamcorper in, auctor et,\nscelerisque sed, est. Suspendisse nisl. Sed convallis magna eu sem. Cras pede libero, dapibus nec, pretium sit amet, tempor quis, urna.\nLorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam feugiat, turpis at pulvinar vulputate, erat libero tristique tellus, nec bibendum odio risus sit amet ante. Aliquam\nerat volutpat. Nunc auctor. Mauris pretium quam et urna. Fusce nibh. Duis risus. Curabitur sagittis hendrerit ante. Aliquam erat volutpat. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Duis condimentum augue id magna semper rutrum. Nullam justo enim, consectetuer nec, ullamcorper ac, vestibulum in, elit. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Fusce consectetuer risus a nunc. Aliquam ornare wisi eu metus. Integer pellentesque quam vel velit.", width/50, height/7); 
+  textSize(20);
+  //Texto da tela
+  text("São Paulo está se tornando um dos principais polos tecnológicos do país: a maior cidade é sede de\ninúmeros escritórios das maiores empresas de tecnologia do mundo, tem algumas das melhores\nuniversidades e é o principal destino de imigração.\n\nEstudos sobre ambientes de inovação dizem que é preciso cinco variáveis em uma cidade para que\nela possa florescer: acesso a talento, acesso a capital, cultura empreendedora, ambiente regulatório\ne densidade. Densidade significa que por mais que o mundo seja digital é preciso um local físico\n[ou vários] onde as pessoas se encontram e circulam para falar de tecnologia, inovação, novos mode-\nlos de negócio, formas de trabalhar e como mudar o mundo.\n\nA Prefeitura iniciou o programa Fab Lab Livre SP em 2015, uma iniciativa que dá acesso a tecnologias avançadas para a população. São 12\nespaços espalhados pela cidade em que qualquer pessoa agenda um horário para utilizar os equipamentos disponíveis. Impressoras 3D,\ncortadoras a laser, computadores com software de desenho digital, além de equipamentos e ferramentas de eletrônica, robótica, marcena-\nria e mecânica são alguns dos materiais disponíveis nesses Fab Labs públicos.", width/50, height/6); 
   if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){fill(#43bdcc);}else{fill(#35939e);}
   
   rect(width/2, 0.85*height, width, height);
@@ -81,19 +87,36 @@ void tela2(){ //TELA DE INTRODUÇÃO SOBRE SÃO PAULO
   
 }
 
-void tela3(){ // TELA SOBRE SÃO PAULO E SUAS TECNOLOGIAS
+void tela3(){ //TELA DE INTRODUÇÃO SOBRE SÃO PAULO 2
   telaAtual = 3;
+  if(primeiroacesso){
+    imagem = loadImage("saopaulowallpaper2.jpg");
+    imagem.resize(300,300);
+    primeiroacesso=false;
+  }
+  
   fill(255);
   rect(0,0,width,height);
+  imageMode(CENTER);
+  image(imagem, width*0.85, height/3);
+  if((mouseX > ((width*0.85)-150) && mouseX < ((width*0.85)+150)) && ((mouseY > (height/3)-150) && (mouseY < (height/3)+150))){
+    ampliaricon.resize(300,300);
+    image(ampliaricon, width*0.85, height/3);
+  }
+  imageMode(CORNER);
   textFont(fontTitle);
-  textAlign(CENTER);
+  textAlign(LEFT);
   fill(0);
-  text("Tela 3\nTO DO: Tecnologia de São Paulo", width/2, height/2);
-  
+  text("Introdução", width/100, height/10);
+  textFont(fontText);
+  textSize(20);
+  //Texto da tela
+  text("Há alguns anos a revista Wired identificou Campinas como um dos núcleos de tecnologia de ponta de\ntodo o Hemisfério Sul. Boa parte do vigor tecnológico da cidade deve-se à existência da Ciatec (Com-\npanhia de Desenvolvimento do Pólo de Alta Tecnologia de Campinas), uma empresa municipal de eco-\nnomia mista. Recentemente, Campinas também se tornou referência nacional nos negócio dos bio-\ncombustíveis com o Centro de Ciência e Tecnologia do Bioetanol (CTBE), capitaneado pelo governo fe-\nderal.\n\nApesar de estarmos em um mundo cada vez mais digital, essa densidade que exige presença física e\nque vem beneficiando São Paulo, a cidade principalmente, é essencial.", width/50, height/6); 
   if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){fill(#43bdcc);}else{fill(#35939e);}
   
   rect(width/2, 0.85*height, width, height);
   fill(255);
+  textAlign(CENTER);
   textFont(fontSubTitle);
   text("Avançar", 0.75*width, 0.925*height*1.02);
   
@@ -103,16 +126,25 @@ void tela3(){ // TELA SOBRE SÃO PAULO E SUAS TECNOLOGIAS
   fill(255);
   textFont(fontSubTitle);
   text("Voltar", 0.25*width, 0.925*height*1.02);
+  
+  
 }
 
-void tela4(){ // TELA SOBRE STARTUPS DE SÃO PAULO
+void tela4(){ // TELA SOBRE SÃO PAULO E SUAS TECNOLOGIAS
   telaAtual = 4;
   fill(255);
   rect(0,0,width,height);
+  imageMode(CORNER);
   textFont(fontTitle);
-  textAlign(CENTER);
+  textAlign(LEFT);
   fill(0);
-  text("Tela 4\nTO DO: Startups", width/2, height/2);
+  text("O que é uma startup?", width/100, height/10);
+  textAlign(LEFT);
+  textFont(fontText);
+  textSize(20);
+  //Texto da tela
+  text("São empresas emergentes, normalmente de base tecnológica, possuem espírito empreendedor e uma constante busca por um modelo de\nnegócio inovador. Este modelo de negócios é a maneira como a empresa emergente gera valor – ou seja, como transforma seu trabalho em\ndinheiro.\n\nUm exemplo é o modelo de negócios do Google que se baseia em cobrar por cada clique nos anúncios mostrados nos resultados de busca.\n\nOutro exemplo seria o modelo de negócio de franquias: o franqueado paga royalties por uma marca, mas tem acesso a uma receita de suces-\nso com suporte do franquiador – e por isso aumenta suas chances de gerar lucro. Empresas que criam modelos de negócio altamente escalá-\nveis, a baixos custos e a partir de ideias inovadoras, são empresas startups. Empresas emergentes não são somente empresas de internet.\nElas só são mais frequentes na internet porque é bem mais barato criar uma empresa de software do que uma indústria.\n\nHá também o sentido de \"startar\" o reposicionamento de uma marca, quando é criado um novo produto ou serviço e o lançam com um novo\nnome e modelo de negócios, os diferenciando da antiga empresa.", width/50, height/6);
+  
   
   if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){fill(#43bdcc);}else{fill(#35939e);}
   
@@ -129,19 +161,36 @@ void tela4(){ // TELA SOBRE STARTUPS DE SÃO PAULO
   text("Voltar", 0.25*width, 0.925*height*1.02);
 }
 
-void tela5(){ // TELA SOBRE ESTUDO DE CASO DE UMA STARTUP
+void tela5(){ // TELA SOBRE STARTUPS 1
   telaAtual = 5;
+  if(primeiroacesso){
+    imagem = loadImage("saopaulowallpaper2.jpg");
+    imagem.resize(300,300);
+    primeiroacesso=false;
+  }
+  
   fill(255);
   rect(0,0,width,height);
+  imageMode(CENTER);
+  image(imagem, width*0.85, height/3);
+  if((mouseX > ((width*0.85)-150) && mouseX < ((width*0.85)+150)) && ((mouseY > (height/3)-150) && (mouseY < (height/3)+150))){
+    ampliaricon.resize(300,300);
+    image(ampliaricon, width*0.85, height/3);
+  }
+  imageMode(CORNER);
   textFont(fontTitle);
-  textAlign(CENTER);
+  textAlign(LEFT);
   fill(0);
-  text("Tela 5\nTO DO: Estudo de caso\nde uma startup", width/2, height/2);
-  
+  text("Introdução", width/100, height/10);
+  textFont(fontText);
+  textSize(20);
+  //Texto da tela
+  text("Há alguns anos a revista Wired identificou Campinas como um dos núcleos de tecnologia de ponta de\ntodo o Hemisfério Sul. Boa parte do vigor tecnológico da cidade deve-se à existência da Ciatec (Com-\npanhia de Desenvolvimento do Pólo de Alta Tecnologia de Campinas), uma empresa municipal de eco-\nnomia mista. Recentemente, Campinas também se tornou referência nacional nos negócio dos bio-\ncombustíveis com o Centro de Ciência e Tecnologia do Bioetanol (CTBE), capitaneado pelo governo fe-\nderal.\n\nApesar de estarmos em um mundo cada vez mais digital, essa densidade que exige presença física e\nque vem beneficiando São Paulo, a cidade principalmente, é essencial.", width/50, height/6); 
   if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){fill(#43bdcc);}else{fill(#35939e);}
   
   rect(width/2, 0.85*height, width, height);
   fill(255);
+  textAlign(CENTER);
   textFont(fontSubTitle);
   text("Avançar", 0.75*width, 0.925*height*1.02);
   
@@ -151,22 +200,207 @@ void tela5(){ // TELA SOBRE ESTUDO DE CASO DE UMA STARTUP
   fill(255);
   textFont(fontSubTitle);
   text("Voltar", 0.25*width, 0.925*height*1.02);
+  
+  
 }
 
-
-void tela6(){ // TELA CONCLUINDO SOBRE SÃO PAULO
+void tela6(){ // TELA SOBRE STARTUPS 2
   telaAtual = 6;
+  if(primeiroacesso){
+    imagem = loadImage("saopaulowallpaper2.jpg");
+    imagem.resize(300,300);
+    primeiroacesso=false;
+  }
+  
   fill(255);
   rect(0,0,width,height);
+  imageMode(CENTER);
+  image(imagem, width*0.85, height/3);
+  if((mouseX > ((width*0.85)-150) && mouseX < ((width*0.85)+150)) && ((mouseY > (height/3)-150) && (mouseY < (height/3)+150))){
+    ampliaricon.resize(300,300);
+    image(ampliaricon, width*0.85, height/3);
+  }
+  imageMode(CORNER);
   textFont(fontTitle);
-  textAlign(CENTER);
+  textAlign(LEFT);
   fill(0);
-  text("Tela 6\nTO DO: Conclusão sobre São Paulo", width/2, height/2);
-  
+  text("Introdução", width/100, height/10);
+  textFont(fontText);
+  textSize(20);
+  //Texto da tela
+  text("Há alguns anos a revista Wired identificou Campinas como um dos núcleos de tecnologia de ponta de\ntodo o Hemisfério Sul. Boa parte do vigor tecnológico da cidade deve-se à existência da Ciatec (Com-\npanhia de Desenvolvimento do Pólo de Alta Tecnologia de Campinas), uma empresa municipal de eco-\nnomia mista. Recentemente, Campinas também se tornou referência nacional nos negócio dos bio-\ncombustíveis com o Centro de Ciência e Tecnologia do Bioetanol (CTBE), capitaneado pelo governo fe-\nderal.\n\nApesar de estarmos em um mundo cada vez mais digital, essa densidade que exige presença física e\nque vem beneficiando São Paulo, a cidade principalmente, é essencial.", width/50, height/6); 
   if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){fill(#43bdcc);}else{fill(#35939e);}
   
   rect(width/2, 0.85*height, width, height);
   fill(255);
+  textAlign(CENTER);
+  textFont(fontSubTitle);
+  text("Avançar", 0.75*width, 0.925*height*1.02);
+  
+  if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){fill(#fc4141);}else{fill(#c43333);}
+  
+  rect(0, 0.85*height, width/2, height);
+  fill(255);
+  textFont(fontSubTitle);
+  text("Voltar", 0.25*width, 0.925*height*1.02);
+  
+  
+}
+
+
+void tela7(){ // TELA SOBRE STARTUPS 3
+  telaAtual = 7;
+  if(primeiroacesso){
+    imagem = loadImage("saopaulowallpaper2.jpg");
+    imagem.resize(300,300);
+    primeiroacesso=false;
+  }
+  
+  fill(255);
+  rect(0,0,width,height);
+  imageMode(CENTER);
+  image(imagem, width*0.85, height/3);
+  if((mouseX > ((width*0.85)-150) && mouseX < ((width*0.85)+150)) && ((mouseY > (height/3)-150) && (mouseY < (height/3)+150))){
+    ampliaricon.resize(300,300);
+    image(ampliaricon, width*0.85, height/3);
+  }
+  imageMode(CORNER);
+  textFont(fontTitle);
+  textAlign(LEFT);
+  fill(0);
+  text("Introdução", width/100, height/10);
+  textFont(fontText);
+  textSize(20);
+  //Texto da tela
+  text("Há alguns anos a revista Wired identificou Campinas como um dos núcleos de tecnologia de ponta de\ntodo o Hemisfério Sul. Boa parte do vigor tecnológico da cidade deve-se à existência da Ciatec (Com-\npanhia de Desenvolvimento do Pólo de Alta Tecnologia de Campinas), uma empresa municipal de eco-\nnomia mista. Recentemente, Campinas também se tornou referência nacional nos negócio dos bio-\ncombustíveis com o Centro de Ciência e Tecnologia do Bioetanol (CTBE), capitaneado pelo governo fe-\nderal.\n\nApesar de estarmos em um mundo cada vez mais digital, essa densidade que exige presença física e\nque vem beneficiando São Paulo, a cidade principalmente, é essencial.", width/50, height/6); 
+  if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){fill(#43bdcc);}else{fill(#35939e);}
+  
+  rect(width/2, 0.85*height, width, height);
+  fill(255);
+  textAlign(CENTER);
+  textFont(fontSubTitle);
+  text("Avançar", 0.75*width, 0.925*height*1.02);
+  
+  if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){fill(#fc4141);}else{fill(#c43333);}
+  
+  rect(0, 0.85*height, width/2, height);
+  fill(255);
+  textFont(fontSubTitle);
+  text("Voltar", 0.25*width, 0.925*height*1.02);
+}
+
+void tela8(){ // TELA SOBRE STARTUPS 4
+  telaAtual = 8;
+  if(primeiroacesso){
+    imagem = loadImage("saopaulowallpaper2.jpg");
+    imagem.resize(300,300);
+    primeiroacesso=false;
+  }
+  
+  fill(255);
+  rect(0,0,width,height);
+  imageMode(CENTER);
+  image(imagem, width*0.85, height/3);
+  if((mouseX > ((width*0.85)-150) && mouseX < ((width*0.85)+150)) && ((mouseY > (height/3)-150) && (mouseY < (height/3)+150))){
+    ampliaricon.resize(300,300);
+    image(ampliaricon, width*0.85, height/3);
+  }
+  imageMode(CORNER);
+  textFont(fontTitle);
+  textAlign(LEFT);
+  fill(0);
+  text("Introdução", width/100, height/10);
+  textFont(fontText);
+  textSize(20);
+  //Texto da tela
+  text("Há alguns anos a revista Wired identificou Campinas como um dos núcleos de tecnologia de ponta de\ntodo o Hemisfério Sul. Boa parte do vigor tecnológico da cidade deve-se à existência da Ciatec (Com-\npanhia de Desenvolvimento do Pólo de Alta Tecnologia de Campinas), uma empresa municipal de eco-\nnomia mista. Recentemente, Campinas também se tornou referência nacional nos negócio dos bio-\ncombustíveis com o Centro de Ciência e Tecnologia do Bioetanol (CTBE), capitaneado pelo governo fe-\nderal.\n\nApesar de estarmos em um mundo cada vez mais digital, essa densidade que exige presença física e\nque vem beneficiando São Paulo, a cidade principalmente, é essencial.", width/50, height/6); 
+  if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){fill(#43bdcc);}else{fill(#35939e);}
+  
+  rect(width/2, 0.85*height, width, height);
+  fill(255);
+  textAlign(CENTER);
+  textFont(fontSubTitle);
+  text("Avançar", 0.75*width, 0.925*height*1.02);
+  
+  if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){fill(#fc4141);}else{fill(#c43333);}
+  
+  rect(0, 0.85*height, width/2, height);
+  fill(255);
+  textFont(fontSubTitle);
+  text("Voltar", 0.25*width, 0.925*height*1.02);
+}
+
+void tela9(){ // TELA SOBRE STARTUPS 5
+  telaAtual = 9;
+  if(primeiroacesso){
+    imagem = loadImage("saopaulowallpaper2.jpg");
+    imagem.resize(300,300);
+    primeiroacesso=false;
+  }
+  
+  fill(255);
+  rect(0,0,width,height);
+  imageMode(CENTER);
+  image(imagem, width*0.85, height/3);
+  if((mouseX > ((width*0.85)-150) && mouseX < ((width*0.85)+150)) && ((mouseY > (height/3)-150) && (mouseY < (height/3)+150))){
+    ampliaricon.resize(300,300);
+    image(ampliaricon, width*0.85, height/3);
+  }
+  imageMode(CORNER);
+  textFont(fontTitle);
+  textAlign(LEFT);
+  fill(0);
+  text("Introdução", width/100, height/10);
+  textFont(fontText);
+  textSize(20);
+  //Texto da tela
+  text("Há alguns anos a revista Wired identificou Campinas como um dos núcleos de tecnologia de ponta de\ntodo o Hemisfério Sul. Boa parte do vigor tecnológico da cidade deve-se à existência da Ciatec (Com-\npanhia de Desenvolvimento do Pólo de Alta Tecnologia de Campinas), uma empresa municipal de eco-\nnomia mista. Recentemente, Campinas também se tornou referência nacional nos negócio dos bio-\ncombustíveis com o Centro de Ciência e Tecnologia do Bioetanol (CTBE), capitaneado pelo governo fe-\nderal.\n\nApesar de estarmos em um mundo cada vez mais digital, essa densidade que exige presença física e\nque vem beneficiando São Paulo, a cidade principalmente, é essencial.", width/50, height/6); 
+  if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){fill(#43bdcc);}else{fill(#35939e);}
+  
+  rect(width/2, 0.85*height, width, height);
+  fill(255);
+  textAlign(CENTER);
+  textFont(fontSubTitle);
+  text("Avançar", 0.75*width, 0.925*height*1.02);
+  
+  if((mouseX > 0 && mouseX < width/2) && (mouseY > (0.85*height) && mouseY < height)){fill(#fc4141);}else{fill(#c43333);}
+  
+  rect(0, 0.85*height, width/2, height);
+  fill(255);
+  textFont(fontSubTitle);
+  text("Voltar", 0.25*width, 0.925*height*1.02);
+}
+
+void tela10(){ // TELA SOBRE STARTUPS 6
+  telaAtual = 10;
+  if(primeiroacesso){
+    imagem = loadImage("saopaulowallpaper2.jpg");
+    imagem.resize(300,300);
+    primeiroacesso=false;
+  }
+  
+  fill(255);
+  rect(0,0,width,height);
+  imageMode(CENTER);
+  image(imagem, width*0.85, height/3);
+  if((mouseX > ((width*0.85)-150) && mouseX < ((width*0.85)+150)) && ((mouseY > (height/3)-150) && (mouseY < (height/3)+150))){
+    ampliaricon.resize(300,300);
+    image(ampliaricon, width*0.85, height/3);
+  }
+  imageMode(CORNER);
+  textFont(fontTitle);
+  textAlign(LEFT);
+  fill(0);
+  text("Introdução", width/100, height/10);
+  textFont(fontText);
+  textSize(20);
+  //Texto da tela
+  text("Há alguns anos a revista Wired identificou Campinas como um dos núcleos de tecnologia de ponta de\ntodo o Hemisfério Sul. Boa parte do vigor tecnológico da cidade deve-se à existência da Ciatec (Com-\npanhia de Desenvolvimento do Pólo de Alta Tecnologia de Campinas), uma empresa municipal de eco-\nnomia mista. Recentemente, Campinas também se tornou referência nacional nos negócio dos bio-\ncombustíveis com o Centro de Ciência e Tecnologia do Bioetanol (CTBE), capitaneado pelo governo fe-\nderal.\n\nApesar de estarmos em um mundo cada vez mais digital, essa densidade que exige presença física e\nque vem beneficiando São Paulo, a cidade principalmente, é essencial.", width/50, height/6); 
+  if((mouseX > width/2 && mouseX < width) && (mouseY > (0.85*height) && mouseY < height)){fill(#43bdcc);}else{fill(#35939e);}
+  
+  rect(width/2, 0.85*height, width, height);
+  fill(255);
+  textAlign(CENTER);
   textFont(fontSubTitle);
   text("Avançar", 0.75*width, 0.925*height*1.02);
   
@@ -179,8 +413,11 @@ void tela6(){ // TELA CONCLUINDO SOBRE SÃO PAULO
 }
 
 
-void tela7(){ //TELA DE INÍCIO DO QUIZ
-  telaAtual = 7;
+
+
+// ----- INÍCIO DO QUIZ ----- 
+void tela11(){ //TELA DE INÍCIO DO QUIZ
+  telaAtual = 11;
   if (primeiroacesso){ //referencia e instancia o objeto MyMovie, esse if serve de controlador para o programa realizar esta ação apenas uma vez
     myMovie = new Movie(this, "SaoPauloCinematic.mp4"); //vídeo de fundo da tela inicial
     myMovie.loop();
@@ -206,8 +443,8 @@ void tela7(){ //TELA DE INÍCIO DO QUIZ
   text("Avançar", width/2, 0.925*height*1.02);
 }
 
-void tela8(){ //Questão quiz
-  telaAtual = 8;
+void tela12(){ //Questão quiz
+  telaAtual = 12;
   
   fill(255);
   rect(0,0,width,height);
@@ -300,8 +537,8 @@ void tela8(){ //Questão quiz
   Respondidas();
 }
 
-void tela9(){ //Questão quiz 2
-  telaAtual = 9;
+void tela13(){ //Questão quiz 2
+  telaAtual = 13;
   
   fill(255);
   rect(0,0,width,height);
@@ -404,8 +641,8 @@ void tela9(){ //Questão quiz 2
   Respondidas();
 }
 
-void tela10(){ //Questão quiz 3
-  telaAtual = 10;
+void tela14(){ //Questão quiz 3
+  telaAtual = 14;
   
   fill(255);
   rect(0,0,width,height);
@@ -508,8 +745,8 @@ void tela10(){ //Questão quiz 3
   Respondidas();
 }
 
-void tela11(){ //Questão quiz 4
-  telaAtual = 11;
+void tela15(){ //Questão quiz 4
+  telaAtual = 15;
   
   fill(255);
   rect(0,0,width,height);
@@ -612,8 +849,8 @@ void tela11(){ //Questão quiz 4
   Respondidas();
 }
 
-void tela12(){ //Questão quiz 5
-  telaAtual = 12;
+void tela16(){ //Questão quiz 5
+  telaAtual = 16;
   
   fill(255);
   rect(0,0,width,height);
@@ -716,8 +953,8 @@ void tela12(){ //Questão quiz 5
   Respondidas();
 }
 
-void tela13(){ //Questão quiz 6
-  telaAtual = 13;
+void tela17(){ //Questão quiz 6
+  telaAtual = 17;
   
   fill(255);
   rect(0,0,width,height);
@@ -820,8 +1057,8 @@ void tela13(){ //Questão quiz 6
   Respondidas();
 }
 
-void tela14(){ //Questão quiz 7
-  telaAtual = 14;
+void tela18(){ //Questão quiz 7
+  telaAtual = 18;
   
   fill(255);
   rect(0,0,width,height);
@@ -924,8 +1161,8 @@ void tela14(){ //Questão quiz 7
   Respondidas();
 }
 
-void tela15(){ //Questão quiz 8
-  telaAtual = 15;
+void tela19(){ //Questão quiz 8
+  telaAtual = 19;
   
   fill(255);
   rect(0,0,width,height);
@@ -1028,8 +1265,8 @@ void tela15(){ //Questão quiz 8
   Respondidas();
 }
 
-void tela16(){ //Questão quiz 9
-  telaAtual = 16;
+void tela20(){ //Questão quiz 9
+  telaAtual = 20;
   
   fill(255);
   rect(0,0,width,height);
@@ -1132,8 +1369,8 @@ void tela16(){ //Questão quiz 9
   Respondidas();
 }
 
-void tela17(){ //Questão quiz 10
-  telaAtual = 17;
+void tela21(){ //Questão quiz 10
+  telaAtual = 21;
   
   fill(255);
   rect(0,0,width,height);
@@ -1238,8 +1475,8 @@ void tela17(){ //Questão quiz 10
 }
 
 
-void tela18(){ //TELA FINAL DO QUIZ
-  telaAtual = 18;
+void tela22(){ //TELA FINAL DO QUIZ
+  telaAtual = 22;
   if (primeiroacesso){ //referencia e instancia o objeto MyMovie, esse if serve de controlador para o programa realizar esta ação apenas uma vez
     myMovie = new Movie(this, "SaoPauloCinematic.mp4"); //vídeo de fundo da tela inicial
     myMovie.loop();
