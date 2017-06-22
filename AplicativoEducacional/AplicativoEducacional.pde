@@ -51,7 +51,7 @@ void setup() {
   
   musica = new SoundFile(this, "musicafundo.mp3");
   musica.loop();
-  musica.amp(0.1);
+  //musica.amp(0.1); Controlador de volume, desativado para apresentação para todo mundo ouvir
   AlturaPadrao = width*0.8;
   ampliaricon = loadImage("ampliarwithtext.png");
   fecharicon = loadImage("close.png");
